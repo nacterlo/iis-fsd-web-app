@@ -5,7 +5,7 @@ import { AddRounded } from '@mui/icons-material'
 import { Box, Typography, Button } from '@mui/joy'
 import { useState } from 'react'
 
-export const GoatDownyPage = () => {
+const GoatDownyPage = () => {
     const [animalId, setAnimalId] = useState<number>()
 
     const [openModalCreate, setOpenModalCreate] = useState(false)
@@ -49,3 +49,5 @@ export const GoatDownyPage = () => {
         </>
     )
 }
+
+export const Component = GoatDownyPage

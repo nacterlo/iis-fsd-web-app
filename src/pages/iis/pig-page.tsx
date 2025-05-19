@@ -5,7 +5,7 @@ import { AddRounded } from "@mui/icons-material"
 import { Box, Button, Typography } from "@mui/joy"
 import { useState } from "react"
 
-export const PigPage = () => {
+const PigPage = () => {
 
   const [animalId, setAnimalId] = useState<number>()
 
@@ -45,8 +45,10 @@ export const PigPage = () => {
       <TablePig onOpenModalUpdate={handleOpenModalUpdate} />
       <ModalCreatePig open={openModalCreate} onClose={() => setOpenModalCreate(false)} />
       {animalId && (
-        <ModalUpdatePig animalId={animalId} open={openModalUpdate} onClose={() => setOpenModalUpdate(false)}/>
+        <ModalUpdatePig animalId={animalId} open={openModalUpdate} onClose={() => setOpenModalUpdate(false)} />
       )}
     </>
   )
 }
+
+export const Component = PigPage

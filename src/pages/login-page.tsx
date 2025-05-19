@@ -1,7 +1,7 @@
 import { LoginForm } from '@/features/auth/components/login-form'
 import { Box, Divider, Stack, Typography } from '@mui/joy'
 
-export default function LoginPage() {
+function LoginPage() {
     return (
         <Box
             component="main"
@@ -45,3 +45,5 @@ export default function LoginPage() {
         </Box>
     )
 }
+
+export const Component = LoginPage

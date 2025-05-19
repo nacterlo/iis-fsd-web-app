@@ -5,7 +5,7 @@ import { AddRounded } from '@mui/icons-material'
 import { Box, Typography, Button } from '@mui/joy'
 import { useState } from 'react'
 
-export const SheepMeatShorthairPage = () => {
+const SheepMeatShorthairPage = () => {
     const [animalId, setAnimalId] = useState<number>()
 
     const [openModalCreate, setOpenModalCreate] = useState(false)
@@ -49,3 +49,5 @@ export const SheepMeatShorthairPage = () => {
         </>
     )
 }
+
+export const Component = SheepMeatShorthairPage

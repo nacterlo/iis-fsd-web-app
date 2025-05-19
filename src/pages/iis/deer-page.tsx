@@ -5,7 +5,7 @@ import { AddRounded } from "@mui/icons-material"
 import { Box, Typography, Button } from "@mui/joy"
 import { useState } from "react"
 
-export const DeerPage = () => {
+const DeerPage = () => {
   const [animalId, setAnimalId] = useState<number>()
 
   const [openModalCreate, setOpenModalCreate] = useState(false)
@@ -47,3 +47,5 @@ export const DeerPage = () => {
     </>
   )
 }
+
+export const Component = DeerPage

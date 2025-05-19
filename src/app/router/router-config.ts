@@ -1,29 +1,7 @@
-import LoginPage from "@/pages/login-page";
 import { createBrowserRouter } from "react-router";
 import { ProtectedRoute } from "@/features/auth/components/protected-route";
 import { MainLayout } from "../layouts/main-layout";
-import CattleMilk from "@/pages/iis/cattle-milk-page";
 import AuthLayout from "../layouts/auth-layout";
-import { CattleMeat } from "@/pages/iis/cattle-meat-page";
-import { PigPage } from "@/pages/iis/pig-page";
-import { BeesPage } from "@/pages/iis/bees-page";
-import { CamelPage } from "@/pages/iis/camel-page";
-import { DeerPage } from "@/pages/iis/deer-page";
-import { FishPage } from "@/pages/iis/fish-page";
-import { HatchingEggsPage } from "@/pages/iis/hatching-eggs-page";
-import { HorsePage } from "@/pages/iis/horse-page";
-import { SpermProdPage } from "@/pages/iis/spermprod-page";
-import { OrganizationsPage } from "@/pages/iis/organizations-page";
-import { GoatDairyPage } from "@/pages/iis/goat-dairy-page";
-import { GoatWoodPage } from "@/pages/iis/goat-wood-page";
-import { GoatBeefPage } from "@/pages/iis/goat-beef-page";
-import { GoatDownyPage } from "@/pages/iis/goat-downy-page";
-import { SheepRoughHairedPage } from "@/pages/iis/sheep-rough-haired-page";
-import { SheepRomanovPage } from "@/pages/iis/sheep-romanov-page";
-import { SheepSmushkovyPage } from "@/pages/iis/sheep-smushkovy-page";
-import { SheepFineFleecedPage } from "@/pages/iis/sheep-fine-flleeced-page";
-import { SheepMeatShorthairPage } from "@/pages/iis/sheep-meat-shorthair-page";
-import { FurryPage } from "@/pages/iis/furry-page";
 
 
 export const routes = createBrowserRouter([
@@ -31,7 +9,10 @@ export const routes = createBrowserRouter([
         path: 'auth',
         Component: AuthLayout,
         children: [
-            { path: 'login', Component: LoginPage }
+            {
+                path: 'login',
+                lazy: () => import('@/pages/login-page'),
+            }
         ]
     },
     {
@@ -41,39 +22,102 @@ export const routes = createBrowserRouter([
                 path: '/',
                 Component: MainLayout,
                 children: [
-                    { path: 'cattle-milk', Component: CattleMilk },
-                    { path: 'cattle-meat', Component: CattleMeat },
+                    {
+                        path: 'cattle-milk',
+                        lazy: () => import('@/pages/iis/cattle-milk-page'),
+                    },
+                    {
+                        path: 'cattle-meat',
+                        lazy: () => import('@/pages/iis/cattle-meat-page'),
+                    },
 
-                    { path: 'pig', Component: PigPage },
+                    {
+                        path: 'pig',
+                        lazy: () => import('@/pages/iis/pig-page'),
+                    },
 
-                    { path: 'sheep-rough-haired', Component: SheepRoughHairedPage },
-                    { path: 'sheep-romanov', Component: SheepRomanovPage },
-                    { path: 'sheep-smushkovy', Component: SheepSmushkovyPage },
-                    { path: 'sheep-fine-fleeced', Component: SheepFineFleecedPage },
-                    { path: 'sheep-meat-shorthair', Component: SheepMeatShorthairPage },
+                    {
+                        path: 'sheep-rough-haired',
+                        lazy: () => import('@/pages/iis/sheep-rough-haired-page'),
+                    },
+                    {
+                        path: 'sheep-romanov',
+                        lazy: () => import('@/pages/iis/sheep-romanov-page'),
+                    },
+                    {
+                        path: 'sheep-smushkovy',
+                        lazy: () => import('@/pages/iis/sheep-smushkovy-page'),
+                    },
+                    {
+                        path: 'sheep-fine-fleeced',
+                        lazy: () => import('@/pages/iis/sheep-fine-flleeced-page'),
+                    },
+                    {
+                        path: 'sheep-meat-shorthair',
+                        lazy: () => import('@/pages/iis/sheep-meat-shorthair-page'),
+                    },
 
-                    { path: 'goat-dairy', Component: GoatDairyPage },
-                    { path: 'goat-beef', Component: GoatBeefPage },
-                    { path: 'goat-wood', Component: GoatWoodPage },
-                    { path: 'goat-downy', Component: GoatDownyPage },
+                    {
+                        path: 'goat-dairy',
+                        lazy: () => import('@/pages/iis/goat-dairy-page'),
+                    },
+                    {
+                        path: 'goat-beef',
+                        lazy: () => import('@/pages/iis/goat-beef-page'),
+                    },
+                    {
+                        path: 'goat-wood',
+                        lazy: () => import('@/pages/iis/goat-wood-page'),
+                    },
+                    {
+                        path: 'goat-downy',
+                        lazy: () => import('@/pages/iis/goat-downy-page'),
+                    },
 
-                    { path: 'bees', Component: BeesPage },
+                    {
+                        path: 'bees',
+                        lazy: () => import('@/pages/iis/bees-page'),
+                    },
 
-                    { path: 'camel', Component: CamelPage },
+                    {
+                        path: 'camel',
+                        lazy: () => import('@/pages/iis/camel-page'),
+                    },
 
-                    { path: 'deer', Component: DeerPage },
+                    {
+                        path: 'deer',
+                        lazy: () => import('@/pages/iis/deer-page'),
+                    },
 
-                    { path: 'fish', Component: FishPage },
+                    {
+                        path: 'fish',
+                        lazy: () => import('@/pages/iis/fish-page'),
+                    },
 
-                    { path: 'hatching-eggs', Component: HatchingEggsPage },
+                    {
+                        path: 'hatching-eggs',
+                        lazy: () => import('@/pages/iis/hatching-eggs-page'),
+                    },
 
-                    { path: 'horse', Component: HorsePage },
+                    {
+                        path: 'horse',
+                        lazy: () => import('@/pages/iis/horse-page'),
+                    },
 
-                    { path: 'mink', Component: FurryPage },
+                    {
+                        path: 'mink',
+                        lazy: () => import('@/pages/iis/furry-page'),
+                    },
 
-                    { path: 'sperm-production', Component: SpermProdPage },
+                    {
+                        path: 'sperm-production',
+                        lazy: () => import('@/pages/iis/spermprod-page'),
+                    },
 
-                    { path: 'organization', Component: OrganizationsPage },
+                    {
+                        path: 'organization',
+                        lazy: () => import('@/pages/iis/organizations-page'),
+                    },
                 ]
             }
         ]

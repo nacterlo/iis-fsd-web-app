@@ -51,4 +51,4 @@ const CattleMilk = () => {
     )
 }
 
-export default CattleMilk
+export const Component = CattleMilk;

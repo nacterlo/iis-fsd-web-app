@@ -5,7 +5,7 @@ import { Box, Typography, Button, Sheet, IconButton, Modal, ModalDialog, ModalCl
 import React from 'react'
 
 
-export const OrganizationsPage = () => {
+ const OrganizationsPage = () => {
     const [open, setOpen] = React.useState(false);
     const [openModalCreate, setOpenModalCreate] = React.useState(false);
 
@@ -98,3 +98,5 @@ export const OrganizationsPage = () => {
         </React.Fragment>
     )
 }
+
+export const Component = OrganizationsPage
