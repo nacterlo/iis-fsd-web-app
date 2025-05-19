@@ -1,6 +1,6 @@
 import { Modal, ModalDialog, ModalClose, Box, Typography, Card, Divider, DialogActions, Button } from "@mui/joy";
 import { BaseModalProps } from "@/shared/lib/types";
-import { CreateGoatBeef, UpdateGoatBeef } from "../../model/types";
+import { CreateGoatBeef } from "../../model/types";
 import { useCreateGoatBeefMutation } from "../../api/goat-beef-api";
 import { FormCreateGoatBeef } from "../forms/create-form";
 

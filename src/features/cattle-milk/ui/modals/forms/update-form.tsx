@@ -2,7 +2,7 @@ import { useGetFullOrganizationsQuery } from "@/app/store/api/organization-api";
 import { CattleMilk, UpdateCattleMilk } from "@/features/cattle-milk/model/types"
 import { Organization } from "@/features/organization/model/types";
 import { FemaleRounded, ListRounded, MaleRounded } from "@mui/icons-material";
-import { Autocomplete, AutocompleteOption, FormControl, FormLabel, Input, Option, Select, Stack, Textarea, Tooltip } from "@mui/joy";
+import { Autocomplete, AutocompleteOption, FormControl, FormLabel, Input, Option, Select, Stack, Textarea } from "@mui/joy";
 import { useEffect, useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 
@@ -51,8 +51,6 @@ export const UpdateFormCattleMilk = ({ initialData, onSubmitUpdate }: CattleMilk
 
 
     const onSubmit: SubmitHandler<UpdateCattleMilk> = (data) => {
-        console.log(data);
-        data.birthDate = data.birthDate + 'T03:00:00Z'
         onSubmitUpdate(data)
     }
 
@@ -74,7 +72,7 @@ export const UpdateFormCattleMilk = ({ initialData, onSubmitUpdate }: CattleMilk
                             <Controller
                                 control={control}
                                 name="addresseeId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         placeholder="Выберите"
                                         isOptionEqualToValue={(option, value) => option.id === value.id}
@@ -104,7 +102,7 @@ export const UpdateFormCattleMilk = ({ initialData, onSubmitUpdate }: CattleMilk
                             <Controller
                                 control={control}
                                 name="businessEntityId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         placeholder="Выберите"
                                         isOptionEqualToValue={(option, value) => option.id === value.id}
@@ -133,7 +131,7 @@ export const UpdateFormCattleMilk = ({ initialData, onSubmitUpdate }: CattleMilk
                             <Controller
                                 control={control}
                                 name="ownerAtBirthId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         placeholder="Выберите"
                                         isOptionEqualToValue={(option, value) => option.id === value.id}

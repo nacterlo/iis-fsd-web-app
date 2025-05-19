@@ -6,7 +6,6 @@ import { formattedDate } from "@/shared/lib/utils"
 import { TableLoading } from "@/shared/ui/table-loading"
 import { TableError } from "@/shared/ui/table-error"
 import { TableNoData } from "@/shared/ui/table-nondata"
-import { CattleMilk } from "../model/types"
 
 
 interface TableCattleMilkProps {
@@ -15,7 +14,7 @@ interface TableCattleMilkProps {
 
 export const TableCattleMilk = ({ onOpenModalUpdate }: TableCattleMilkProps) => {
 
-    const [page, setPage] = useState(1)
+    const [page, _setPage] = useState(1)
     const limit = 10
 
     const { data: cattleMilkList, isLoading: loadingCattleMilkList, isError } = useGetCattleMilkListQuery({

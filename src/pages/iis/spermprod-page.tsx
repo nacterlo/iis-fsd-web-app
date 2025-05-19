@@ -5,10 +5,10 @@ import { Box, Typography, Button } from "@mui/joy"
 import { useState } from "react"
 
 export const SpermProdPage = () => {
-    const [animalId, setAnimalId] = useState<number>()
+    const [_animalId, setAnimalId] = useState<number>()
 
     const [openModalCreate, setOpenModalCreate] = useState(false)
-    const [openModalUpdate, setOpenModalUpdate] = useState(false)
+    const [_openModalUpdate, setOpenModalUpdate] = useState(false)
 
     const handleOpenModalUpdate = async (animalId: number) => {
         setAnimalId(animalId)

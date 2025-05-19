@@ -1,5 +1,4 @@
-import { Stack, FormControl, FormLabel, Autocomplete, AutocompleteOption, Input, Option, Select, Textarea } from "@mui/joy";
-import { MaleRounded, FemaleRounded } from "@mui/icons-material";
+import { Stack, FormControl, FormLabel, Autocomplete, AutocompleteOption, Input, Option, Select } from "@mui/joy";
 import { useEffect, useState } from "react";
 import { useGetFullOrganizationsQuery } from "@/app/store/api/organization-api";
 import { Organization } from "@/features/organization/model/types";
@@ -16,7 +15,6 @@ export const FormUpdateFish = ({ initialData, onSubmitUpdate }: UpdateFormProps)
         control,
         handleSubmit,
         reset,
-        watch,
         formState: { errors },
     } = useForm<FormValuesFish>();
 
@@ -69,7 +67,7 @@ export const FormUpdateFish = ({ initialData, onSubmitUpdate }: UpdateFormProps)
                             <Controller
                                 control={control}
                                 name="addresseeId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         placeholder="Выберите"
                                         isOptionEqualToValue={(option, value) => option.id === value.id}
@@ -99,7 +97,7 @@ export const FormUpdateFish = ({ initialData, onSubmitUpdate }: UpdateFormProps)
                             <Controller
                                 control={control}
                                 name="businessEntityId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         placeholder="Выберите"
                                         isOptionEqualToValue={(option, value) => option.id === value.id}
@@ -128,7 +126,7 @@ export const FormUpdateFish = ({ initialData, onSubmitUpdate }: UpdateFormProps)
                             <Controller
                                 control={control}
                                 name="ownerAtBirthId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         placeholder="Выберите"
                                         isOptionEqualToValue={(option, value) => option.id === value.id}

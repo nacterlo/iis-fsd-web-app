@@ -3,7 +3,7 @@ import { ModalUpdateGoatDairy } from '@/features/goat-dairy/ui/modals/modal-upda
 import { TableGoatDairy } from '@/features/goat-dairy/ui/table-goat-dairy'
 import { AddRounded } from '@mui/icons-material'
 import { Box, Typography, Button } from '@mui/joy'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 export const GoatDairyPage = () => {
     const [animalId, setAnimalId] = useState<number>()

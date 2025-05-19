@@ -15,7 +15,7 @@ interface TableProps {
 
 
 export const TableEgg = ({ onOpenModalUpdate }: TableProps) => {
-    const [page, setPage] = useState(1)
+    const [page, _setPage] = useState(1)
     const limit = 10
 
     const { data: eggList, isLoading: loadingEggList, isError } = useGetEggListQuery({ limit, page })

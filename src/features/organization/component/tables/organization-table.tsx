@@ -1,6 +1,5 @@
 import { useGetOrganizationsQuery } from '@/app/store/api/organization-api'
-import { FileUploadRounded } from '@mui/icons-material'
-import { Box, Checkbox, Chip, CircularProgress, IconButton, Link, Sheet, Table, Typography } from '@mui/joy'
+import { Box, CircularProgress, Link, Sheet, Table, Typography } from '@mui/joy'
 import React from 'react'
 import { PaginationOrganization } from '../pagination/pagination-oraganization'
 

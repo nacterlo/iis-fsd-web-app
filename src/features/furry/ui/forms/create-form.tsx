@@ -17,7 +17,6 @@ export const FormCreateFurry = ({ onSubmitCreate }: CreateFormProps) => {
     const {
         control,
         handleSubmit,
-        reset,
         watch,
         formState: { errors },
     } = useForm<FormValuesFurry>()
@@ -62,7 +61,7 @@ export const FormCreateFurry = ({ onSubmitCreate }: CreateFormProps) => {
                             <Controller
                                 control={control}
                                 name="addresseeId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         size="sm"
                                         placeholder="Получатель"
@@ -92,7 +91,7 @@ export const FormCreateFurry = ({ onSubmitCreate }: CreateFormProps) => {
                             <Controller
                                 control={control}
                                 name="businessEntityId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         size="sm"
                                         placeholder="Собственник"
@@ -121,7 +120,7 @@ export const FormCreateFurry = ({ onSubmitCreate }: CreateFormProps) => {
                             <Controller
                                 control={control}
                                 name="ownerAtBirthId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         size="sm"
                                         placeholder="Место рождения"

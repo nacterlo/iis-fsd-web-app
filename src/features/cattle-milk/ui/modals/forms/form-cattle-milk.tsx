@@ -71,7 +71,6 @@ export const FormCattleMilk = ({ onSubmitCrateCattleMilk }: FormCattleMilkProps)
     }, [searchOwnerAtBirthId])
 
     const onSubmit: SubmitHandler<CreateCattleMilk> = async (data) => {
-        data.birthDate = data.birthDate + 'T03:00:00Z'
         await onSubmitCrateCattleMilk(data)
     }
 

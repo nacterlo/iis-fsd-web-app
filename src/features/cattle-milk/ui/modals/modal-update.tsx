@@ -1,5 +1,5 @@
 import { BaseModalProps } from "@/shared/lib/types";
-import { CattleMilk, UpdateCattleMilk } from "../../model/types";
+import { UpdateCattleMilk } from "../../model/types";
 import { Box, Button, Card, CircularProgress, DialogActions, Divider, Modal, ModalClose, ModalDialog, Typography } from "@mui/joy";
 import { UpdateFormCattleMilk } from "./forms/update-form";
 import { useGetCattleMilkQuery, useUpdateCattleMilkMutation } from "../../api/cattle-milk-api";
@@ -60,7 +60,7 @@ export const ModalUpdateCattleMilk = ({ open, onClose, animalId }: ModalUpdatePr
                     buttonFlex="none"
                     sx={{ pt: 1.5, justifyContent: 'flex-start', marginTop: 'auto' }}
                 >
-                    <Button size="sm" type='submit' form='updateCattleMilk'>Изменить</Button>
+                    <Button size="sm" type='submit' form='updateCattleMilk' disabled={loadingUpdateCattleMilk}>Изменить</Button>
                     <Button variant='outlined' size="sm" onClick={() => onClose()}>Отмена</Button>
                 </DialogActions>
             </ModalDialog>

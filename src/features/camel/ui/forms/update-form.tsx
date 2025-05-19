@@ -3,8 +3,7 @@ import { Camel, FormValuesCamel, UpdateCamel } from "../../model/types"
 import { useEffect, useState } from "react"
 import { useGetFullOrganizationsQuery } from "@/app/store/api/organization-api"
 import { Organization } from "@/features/organization/model/types"
-import { Autocomplete, AutocompleteOption, Box, Button, Card, Divider, FormControl, FormLabel, Input, Option, Select, Stack, Textarea } from "@mui/joy"
-import { convertToBase64 } from "@/shared/lib/utils"
+import { Autocomplete, AutocompleteOption, FormControl, FormLabel, Input, Option, Select, Stack, Textarea } from "@mui/joy"
 import { MaleRounded, FemaleRounded, ListRounded } from "@mui/icons-material"
 
 

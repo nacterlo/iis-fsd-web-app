@@ -16,7 +16,7 @@ interface TableCattleBeefProps {
 
 export const TabbleCattleBeef = ({ onOpenModalUpdate }: TableCattleBeefProps) => {
 
-    const [page, setPage] = useState(1)
+    const [page, _setPage] = useState(1)
     const limit = 10
 
     const { data: cattleBeefList, isLoading: loadingCattleMilkList, isError } = useGetCattleBeefListQuery({ limit, page })

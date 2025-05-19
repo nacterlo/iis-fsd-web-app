@@ -3,7 +3,6 @@ import { useGetFullOrganizationsQuery } from "@/app/store/api/organization-api";
 import { useEffect, useState } from "react";
 import { Organization } from "@/features/organization/model/types";
 import { Stack, FormControl, FormLabel, Autocomplete, AutocompleteOption, Option, Input, Select, Textarea } from "@mui/joy";
-import { MaleRounded, FemaleRounded } from "@mui/icons-material";
 import { CreateEgg, FormValuesEgg } from "../../model/types";
 
 
@@ -15,7 +14,6 @@ export const FormCreateEgg = ({ onSubmitCreate }: CreateFormProps) => {
     const {
         control,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm<FormValuesEgg>()
 
@@ -58,7 +56,7 @@ export const FormCreateEgg = ({ onSubmitCreate }: CreateFormProps) => {
                             <Controller
                                 control={control}
                                 name="addresseeId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         size="sm"
                                         placeholder="Получатель"
@@ -88,7 +86,7 @@ export const FormCreateEgg = ({ onSubmitCreate }: CreateFormProps) => {
                             <Controller
                                 control={control}
                                 name="businessEntityId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         size="sm"
                                         placeholder="Собственник"
@@ -117,7 +115,7 @@ export const FormCreateEgg = ({ onSubmitCreate }: CreateFormProps) => {
                             <Controller
                                 control={control}
                                 name="ownerAtBirthId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         size="sm"
                                         placeholder="Место рождения"

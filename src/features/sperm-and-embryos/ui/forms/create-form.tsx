@@ -12,7 +12,7 @@ interface CreateFormProps {
     onSubmitCreate: (data: CreateSpermAndEmbryos) => Promise<void>
 }
 
-export const FormCreateSpermAndEmbryos = ({ onSubmitCreate }: CreateFormProps) => {
+export const FormCreateSpermAndEmbryos = ({ }: CreateFormProps) => {
     const {
         control,
         handleSubmit,
@@ -48,7 +48,7 @@ export const FormCreateSpermAndEmbryos = ({ onSubmitCreate }: CreateFormProps) =
 
     const [valueTypeAnimal, setValueTypeAnimal] = useState<string | null>(null);
     const handleChangeTypeAnimal = (
-        event: React.SyntheticEvent | null,
+        _event: React.SyntheticEvent | null,
         newValue: string | null,
     ) => {
         setValueTypeAnimal(newValue);

@@ -14,7 +14,7 @@ interface TableProps {
 
 export const TableFurry = ({ onOpenModalUpdate }: TableProps) => {
 
-    const [page, setPage] = useState(1)
+    const [page, _setPage] = useState(1)
     const limit = 10
 
     const { data: furryList, isLoading: loadingFurry, isError } = useGetFurryListQuery({ limit, page })

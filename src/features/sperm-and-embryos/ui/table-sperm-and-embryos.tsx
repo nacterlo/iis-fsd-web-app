@@ -14,7 +14,7 @@ interface TableProps {
 
 
 export const TableSpermAndEmbryos = ({ onOpenModalUpdate }: TableProps) => {
-    const [page, setPage] = useState(1)
+    const [page, _setPage] = useState(1)
     const limit = 10
 
     const { data: spermEmbryosList, isLoading: loadingSpermEmbryos, isError } = useGetSpermAndEmbryosListQuery({ limit, page })

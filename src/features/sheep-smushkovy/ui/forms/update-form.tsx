@@ -60,7 +60,7 @@ export const FormUpdateSheepSmushkovy = ({ initialData, onSubmitUpdate }: Update
                             <Controller
                                 control={control}
                                 name="addresseeId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         placeholder="Выберите"
                                         isOptionEqualToValue={(option, value) => option.id === value.id}
@@ -90,7 +90,7 @@ export const FormUpdateSheepSmushkovy = ({ initialData, onSubmitUpdate }: Update
                             <Controller
                                 control={control}
                                 name="businessEntityId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         placeholder="Выберите"
                                         isOptionEqualToValue={(option, value) => option.id === value.id}
@@ -119,7 +119,7 @@ export const FormUpdateSheepSmushkovy = ({ initialData, onSubmitUpdate }: Update
                             <Controller
                                 control={control}
                                 name="ownerAtBirthId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         placeholder="Выберите"
                                         isOptionEqualToValue={(option, value) => option.id === value.id}

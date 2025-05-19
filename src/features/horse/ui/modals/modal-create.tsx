@@ -1,7 +1,7 @@
 import { BaseModalProps } from "@/shared/lib/types";
 import { useCreateHorseMutation } from "../../api/horse-api";
 import { CreateHorse } from "../../model/types";
-import { Modal, ModalDialog, ModalClose, Box, Typography, Card, Divider, DialogActions, Button, Textarea } from "@mui/joy";
+import { Modal, ModalDialog, ModalClose, Box, Typography, Card, Divider, DialogActions, Button } from "@mui/joy";
 import { FormHorse } from "../forms/create-form";
 
 

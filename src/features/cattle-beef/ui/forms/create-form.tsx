@@ -15,7 +15,6 @@ export const FormCattleBeef = ({ onSubmitCreateCattleBeef }: FormCattleBeefProps
     const {
         control,
         handleSubmit,
-        reset,
         watch,
         formState: { errors },
     } = useForm<CreateCattleBeef>()
@@ -29,8 +28,6 @@ export const FormCattleBeef = ({ onSubmitCreateCattleBeef }: FormCattleBeefProps
     }, [fullOrganizations])
 
     const onSubmit: SubmitHandler<CreateCattleBeef> = async (data) => {
-        data.birthDate = data.birthDate
-        console.log(data);
         await onSubmitCreateCattleBeef(data)
         // onSubmitUpdate(data)
     }
@@ -45,7 +42,7 @@ export const FormCattleBeef = ({ onSubmitCreateCattleBeef }: FormCattleBeefProps
                             <Controller
                                 control={control}
                                 name="addresseeId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         size="sm"
                                         placeholder="Получатель"
@@ -75,7 +72,7 @@ export const FormCattleBeef = ({ onSubmitCreateCattleBeef }: FormCattleBeefProps
                             <Controller
                                 control={control}
                                 name="businessEntityId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         size="sm"
                                         placeholder="Собственник"
@@ -104,7 +101,7 @@ export const FormCattleBeef = ({ onSubmitCreateCattleBeef }: FormCattleBeefProps
                             <Controller
                                 control={control}
                                 name="ownerAtBirthId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         size="sm"
                                         placeholder="Место рождения"

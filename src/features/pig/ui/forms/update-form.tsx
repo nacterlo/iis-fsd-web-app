@@ -47,8 +47,6 @@ export const UpdateFormPig = ({ initialData, onSubmitUpdate }: UpdateFormPigProp
     }, [initialData, reset])
 
     const onSubmit: SubmitHandler<UpdatePig> = (data) => {
-        console.log(data);
-        data.birthDate = data.birthDate + 'T03:00:00Z'
         onSubmitUpdate(data)
     }
 

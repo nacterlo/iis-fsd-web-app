@@ -59,7 +59,7 @@ export const ModalUpdateCattleBeef = ({ open, onClose, animalId }: ModalUpdatePr
                     buttonFlex="none"
                     sx={{ pt: 1.5, justifyContent: 'flex-start', marginTop: 'auto' }}
                 >
-                    <Button size="sm" type='submit' form='updateCattleBeef'>Изменить</Button>
+                    <Button size="sm" type='submit' form='updateCattleBeef' disabled={loadingUpdateCattleMilk}>Изменить</Button>
                     <Button variant='outlined' size="sm" onClick={() => onClose()}>Отмена</Button>
                 </DialogActions>
             </ModalDialog>

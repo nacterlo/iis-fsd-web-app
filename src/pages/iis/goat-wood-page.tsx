@@ -3,7 +3,7 @@ import { ModalUpdateGoatWood } from '@/features/goat-wood/ui/modals/modal-update
 import { TableGoatWood } from '@/features/goat-wood/ui/table-goat-wood'
 import { AddRounded } from '@mui/icons-material'
 import { Box, Typography, Button } from '@mui/joy'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 export const GoatWoodPage = () => {
     const [animalId, setAnimalId] = useState<number>()

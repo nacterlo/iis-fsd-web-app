@@ -1,6 +1,5 @@
 import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material'
-import { Box, iconButtonClasses, Button, IconButton } from '@mui/joy'
-import React from 'react'
+import { Box, iconButtonClasses, Button } from '@mui/joy'
 
 interface PaginationProps {
     currentPage: number;

@@ -14,7 +14,7 @@ interface TableProps {
 
 
 export const TableGoatBeef = ({ onOpenModalUpdate }: TableProps) => {
-    const [page, setPage] = useState(1)
+    const [page, _setPage] = useState(1)
     const limit = 10
 
     const { data: goatList, isLoading: loadingGoatList, isError } = useGetGoatBeefListQuery({ limit, page })

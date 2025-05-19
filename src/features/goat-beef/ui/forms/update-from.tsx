@@ -4,7 +4,6 @@ import { GoatBeef, UpdateGoatBeef } from "../../model/types";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useGetFullOrganizationsQuery } from "@/app/store/api/organization-api";
-import { UpdateGoatDairy } from "@/features/goat-dairy/model/types";
 import { Organization } from "@/features/organization/model/types";
 
 
@@ -64,7 +63,7 @@ export const FormUpdateGoatBeef = ({ initialData, onSubmitUpdate }: UpdateFormPr
                             <Controller
                                 control={control}
                                 name="addresseeId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         placeholder="Выберите"
                                         isOptionEqualToValue={(option, value) => option.id === value.id}
@@ -94,7 +93,7 @@ export const FormUpdateGoatBeef = ({ initialData, onSubmitUpdate }: UpdateFormPr
                             <Controller
                                 control={control}
                                 name="businessEntityId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         placeholder="Выберите"
                                         isOptionEqualToValue={(option, value) => option.id === value.id}
@@ -123,7 +122,7 @@ export const FormUpdateGoatBeef = ({ initialData, onSubmitUpdate }: UpdateFormPr
                             <Controller
                                 control={control}
                                 name="ownerAtBirthId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         placeholder="Выберите"
                                         isOptionEqualToValue={(option, value) => option.id === value.id}

@@ -30,7 +30,6 @@ export const FormPig = ({ onSubmitCreate }: FormPigProps) => {
     }, [fullOrganizations])
 
     const onSubmit: SubmitHandler<CreatePig> = async (data) => {
-        data.birthDate = data.birthDate + 'T03:00:00Z'
         await onSubmitCreate(data)
     }
 

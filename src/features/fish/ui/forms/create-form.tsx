@@ -2,7 +2,7 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useGetFullOrganizationsQuery } from "@/app/store/api/organization-api";
 import { Organization } from "@/features/organization/model/types";
-import { Autocomplete, AutocompleteOption, FormControl, FormLabel, Input, Option, Select, Stack, Textarea } from "@mui/joy";
+import { Autocomplete, AutocompleteOption, FormControl, FormLabel, Input, Option, Select, Stack } from "@mui/joy";
 import { CreateFish, FormValuesFish } from "../../model/types";
 
 
@@ -15,8 +15,6 @@ export const FormCreateFish = ({ onSubmitCreate }: CreateFormProps) => {
     const {
         control,
         handleSubmit,
-        reset,
-        watch,
         formState: { errors },
     } = useForm<FormValuesFish>()
 
@@ -54,7 +52,7 @@ export const FormCreateFish = ({ onSubmitCreate }: CreateFormProps) => {
                             <Controller
                                 control={control}
                                 name="addresseeId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         size="sm"
                                         placeholder="Получатель"
@@ -84,7 +82,7 @@ export const FormCreateFish = ({ onSubmitCreate }: CreateFormProps) => {
                             <Controller
                                 control={control}
                                 name="businessEntityId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         size="sm"
                                         placeholder="Собственник"
@@ -113,7 +111,7 @@ export const FormCreateFish = ({ onSubmitCreate }: CreateFormProps) => {
                             <Controller
                                 control={control}
                                 name="ownerAtBirthId"
-                                render={({ field: { onChange, value, ref } }) => (
+                                render={({ field: { onChange, ref } }) => (
                                     <Autocomplete
                                         size="sm"
                                         placeholder="Место рождения"

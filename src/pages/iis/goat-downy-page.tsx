@@ -3,7 +3,7 @@ import { ModalUpdateGoatDowny } from '@/features/goat-downy/ui/modals/modal-upda
 import { TableGoatDowny } from '@/features/goat-downy/ui/table-goat-downy'
 import { AddRounded } from '@mui/icons-material'
 import { Box, Typography, Button } from '@mui/joy'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 export const GoatDownyPage = () => {
     const [animalId, setAnimalId] = useState<number>()

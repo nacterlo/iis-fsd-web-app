@@ -1,5 +1,5 @@
 import { BaseModalProps } from "@/shared/lib/types";
-import { Modal, ModalDialog, ModalClose, Box, Typography, Card, Divider, DialogActions, Button } from "@mui/joy";
+import { Modal, ModalDialog, ModalClose, Box, Typography, Card, DialogActions, Button } from "@mui/joy";
 import { useCreateSpermAndEmbryosMutation } from "../../api/sperm-and-embryos-api";
 import { CreateSpermAndEmbryos } from "../../model/types";
 import { FormCreateSpermAndEmbryos } from "../forms/create-form";
