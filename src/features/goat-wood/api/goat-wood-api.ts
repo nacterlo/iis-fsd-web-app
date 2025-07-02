@@ -45,6 +45,13 @@ export const goatWoodApi = goatWoodApiWithTags.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['GoatWood'],
+        }),
+        uploadIISGoatWood: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/12-goat-wool/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['GoatWoodList'],
         })
     }),
 })
@@ -53,5 +60,7 @@ export const {
     useGetGoatWoodListQuery,
     useGetGoatWoodQuery,
     useCreateGoatWoodMutation,
-    useUpdateGoatWoodMutation
+    useUpdateGoatWoodMutation,
+    useDeleteGoatWoodMutation,
+    useUploadIISGoatWoodMutation
 } = goatWoodApi

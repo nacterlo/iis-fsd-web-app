@@ -38,6 +38,13 @@ export const pigApi = pigApiWithTag.injectEndpoints({
             }),
             invalidatesTags: ['PigList', 'Pig'],
         }),
+        uploadIISPig: builder.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/03-pig/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['PigList'],
+        })
     }),
 })
 

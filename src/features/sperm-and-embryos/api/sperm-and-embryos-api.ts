@@ -43,6 +43,13 @@ export const spermEmbryosApi = spermEmbryosApiWithTags.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['SpermAndEmbryos']
+        }),
+        uploadIISSpermAndEmbryos: builder.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/21-sperm-and-embryos/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['SpermAndEmbryosList'],
         })
     }),
 })
@@ -52,5 +59,6 @@ export const {
     useGetSpermAndEmbryosQuery,
     useCreateSpermAndEmbryosMutation,
     useUpdateSpermAndEmbryosMutation,
-    useDeleteSpermAndEmbryosMutation
+    useDeleteSpermAndEmbryosMutation,
+    useUploadIISSpermAndEmbryosMutation
 } = spermEmbryosApi

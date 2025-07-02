@@ -43,6 +43,13 @@ export const deerApi = deerApiWithTags.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['Deer'],
+        }),
+        uploadIISDeer: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/14-deer/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['DeerList'],
         })
     }),
 })
@@ -52,5 +59,6 @@ export const {
     useGetDeerQuery,
     useCreateDeerMutation,
     useUpdateDeerMutation,
-    useDeleteDeerMutation
+    useDeleteDeerMutation,
+    useUploadIISDeerMutation
 } = deerApi

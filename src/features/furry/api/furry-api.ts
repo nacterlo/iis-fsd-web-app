@@ -44,6 +44,13 @@ export const furryApi = furryApiWithTags.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['Furry'],
+        }),
+        uploadIISFurry: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/16-furry/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['FurryList'],
         })
     }),
 })
@@ -52,5 +59,7 @@ export const {
     useGetFurryListQuery,
     useGetFurryQuery,
     useCreateFurryMutation,
-    useUpdateFurryMutation
+    useUpdateFurryMutation,
+    useDeleteFurryMutation,
+    useUploadIISFurryMutation
 } = furryApi

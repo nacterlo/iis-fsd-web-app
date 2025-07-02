@@ -37,6 +37,13 @@ export const cattleBeefApi = cattleBeefApiWithTags.injectEndpoints({
                 body: data
             }),
             invalidatesTags: ['CattleBeefList', 'CattleBeef'],
+        }),
+        uploadIISCattleBeef: builder.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/02-cattle-beef/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['CattleBeefList'],
         })
     })
 })
@@ -45,5 +52,6 @@ export const {
     useGetCattleBeefListQuery,
     useGetCattleBeefQuery,
     useCreateCattleBeefMutation,
-    useUpdateCattleBeefMutation
+    useUpdateCattleBeefMutation,
+    useUploadIISCattleBeefMutation
 } = cattleBeefApi

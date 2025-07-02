@@ -46,6 +46,13 @@ export const sheepMeatShorthairApi = sheepMeatShorthairApiWithTags.injectEndpoin
                 method: 'DELETE',
             }),
             invalidatesTags: ['SheepMeatShorthair'],
+        }),
+        uploadIISSheepMeatShorthair: builder.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/09-sheep-meat-shorthair/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['SheepMeatShorthairList'],
         })
     }),
 })
@@ -55,5 +62,6 @@ export const {
     useGetSheepMeatShorthairQuery,
     useCreateSheepMeatShorthairMutation,
     useUpdateSheepMeatShorthairMutation,
-    useDeleteSheepMeatShorthairMutation
+    useDeleteSheepMeatShorthairMutation,
+    useUploadIISSheepMeatShorthairMutation
 } = sheepMeatShorthairApi

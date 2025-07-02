@@ -44,6 +44,13 @@ export const goatBeefApi = goatBeefApiWithTags.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['GoatBeef'],
+        }),
+        uploadIISGoatBeef: builder.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/11-goat-beef/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['GoatBeefList'],
         })
     }),
 })
@@ -52,5 +59,6 @@ export const {
     useGetGoatBeefListQuery,
     useGetGoatBeefQuery,
     useCreateGoatBeefMutation,
-    useUpdateGoatBeefMutation
+    useUpdateGoatBeefMutation,
+    useDeleteGoatBeefMutation,
 } = goatBeefApi

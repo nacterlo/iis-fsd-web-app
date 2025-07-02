@@ -46,8 +46,22 @@ export const sheepRoughApi = sheepRoughApiWithTags.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['SheepRough'],
+        }),
+        uploadIISSheepRough: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/05-sheep-rough-haired/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['SheepRoughList'],
         })
     }),
 })
 
-export const { useGetSheepRoughListQuery, useGetSheepRoughQuery, useCreateSheepRoughMutation, useUpdateSheepRoughMutation, useDeleteSheepRoughMutation } = sheepRoughApi
+export const {
+    useGetSheepRoughListQuery,
+    useGetSheepRoughQuery,
+    useCreateSheepRoughMutation,
+    useUpdateSheepRoughMutation,
+    useDeleteSheepRoughMutation,
+    useUploadIISSheepRoughMutation
+} = sheepRoughApi

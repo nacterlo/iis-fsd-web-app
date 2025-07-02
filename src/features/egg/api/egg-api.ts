@@ -42,7 +42,21 @@ export const eggApi = eggApiWithTags.injectEndpoints({
             }),
             invalidatesTags: ['Egg']
         }),
+        uploadIISEgg: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/18-egg/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['EggList'],
+        })
     }),
 })
 
-export const { useGetEggListQuery, useGetEggQuery, useCreateEggMutation, useUpdateEggMutation, useDeleteEggMutation } = eggApi
+export const {
+    useGetEggListQuery,
+    useGetEggQuery,
+    useCreateEggMutation,
+    useUpdateEggMutation,
+    useDeleteEggMutation,
+    useUploadIISEggMutation
+} = eggApi

@@ -39,6 +39,13 @@ export const horseApi = horseApiWithTags.injectEndpoints({
                 body: data
             }),
             invalidatesTags: ['HorseList', 'Horse'],
+        }),
+        uploadIISHorse: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/04-horse/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['HorseList'],
         })
     }),
 })
@@ -47,5 +54,6 @@ export const {
     useGetHorseListQuery,
     useGetHorseQuery,
     useCreateHorseMutation,
-    useUpdateHorseMutation
+    useUpdateHorseMutation,
+    useUploadIISHorseMutation
 } = horseApi

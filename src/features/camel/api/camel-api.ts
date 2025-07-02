@@ -43,6 +43,13 @@ export const camelApi = camelApiWithTags.injectEndpoints({
                 url: `/15-camel/${id}/`,
                 method: 'DELETE',
             }),
+        }),
+        uploadIISCamel: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/15-camel/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['CamelList'],
         })
     }),
 })
@@ -51,5 +58,7 @@ export const {
     useGetCamelListQuery,
     useGetCamelQuery,
     useCreateCamelMutation,
-    useUpdateCamelMutation
+    useUpdateCamelMutation,
+    useDeleteCamelMutation,
+    useUploadIISCamelMutation
 } = camelApi

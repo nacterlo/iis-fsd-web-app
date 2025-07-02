@@ -1,13 +1,22 @@
 import { ModalCreateOrganization } from '@/features/organization/component/modals/modal-create-organization'
+import { ModalUpdateOrganization } from '@/features/organization/component/modals/modal-update-organization'
 import OrganizationTable from '@/features/organization/component/tables/organization-table'
 import { AddRounded, Search, FilterAlt } from '@mui/icons-material'
 import { Box, Typography, Button, Sheet, IconButton, Modal, ModalDialog, ModalClose, Divider, FormControl, FormLabel, Input } from '@mui/joy'
 import React from 'react'
 
 
- const OrganizationsPage = () => {
+const OrganizationsPage = () => {
     const [open, setOpen] = React.useState(false);
     const [openModalCreate, setOpenModalCreate] = React.useState(false);
+    const [openModalUpdate, setOpenModalUpdate] = React.useState(false);
+
+    const [organizationId, setOrganizationId] = React.useState<number>();
+
+    const onOpenModalUpdate = (id: number) => {
+        setOrganizationId(id);
+        setOpenModalUpdate(true);
+    }
 
     return (
         <React.Fragment>
@@ -93,8 +102,11 @@ import React from 'react'
                 </Box>
                 {/* {renderFilters()} */}
             </Box>
-            <OrganizationTable />
+            <OrganizationTable onOpenModalUpdate={onOpenModalUpdate} />
             <ModalCreateOrganization open={openModalCreate} onClose={() => setOpenModalCreate(false)} />
+            {organizationId && (
+                <ModalUpdateOrganization id={organizationId} open={openModalUpdate} onClose={() => setOpenModalUpdate(false)} />
+            )}
         </React.Fragment>
     )
 }

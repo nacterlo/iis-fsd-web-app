@@ -46,8 +46,22 @@ export const sheepRomanovApi = sheepRomanovApiWithTags.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['SheepRomanov'],
+        }),
+        uploadIISSheepRomanov: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/06-sheep-romanov/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['SheepRomanovList'],
         })
     }),
 })
 
-export const { useGetSheepRomanovListQuery, useGetSheepRomanovQuery, useCreateSheepRomanovMutation, useUpdateSheepRomanovMutation, useDeleteSheepRomanovMutation } = sheepRomanovApi
+export const {
+    useGetSheepRomanovListQuery,
+    useGetSheepRomanovQuery,
+    useCreateSheepRomanovMutation,
+    useUpdateSheepRomanovMutation,
+    useDeleteSheepRomanovMutation,
+    useUploadIISSheepRomanovMutation
+} = sheepRomanovApi

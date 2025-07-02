@@ -46,6 +46,13 @@ export const goatDairyApi = goatDairyApiWithTags.injectEndpoints({
             }),
             invalidatesTags: ['GoatDairy'],
         }),
+        uploadIISGoatDairy: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/10-goat-dairy/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['GoatDairyList'],
+        })
     }),
 })
 
@@ -53,5 +60,6 @@ export const {
     useGetGoatDairyQuery,
     useGetGoatDairyListQuery,
     useCreateGoatDairyMutation,
-    useUpdateGoatDairyMutation
+    useUpdateGoatDairyMutation,
+    useDeleteGoatDairyMutation,
 } = goatDairyApi

@@ -43,6 +43,13 @@ export const fishApi = fishApiWithTags.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['Fish'],
+        }),
+        uploadIISFish: builder.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/19-fish/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['FishList'],
         })
     }),
 })
@@ -52,5 +59,6 @@ export const {
     useGetFishQuery,
     useCreateFishMutation,
     useUpdateFishMutation,
-    useDeleteFishMutation
+    useDeleteFishMutation,
+    useUploadIISFishMutation
 } = fishApi

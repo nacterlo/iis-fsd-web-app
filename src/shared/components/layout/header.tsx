@@ -10,15 +10,20 @@ import ColorSchemeToggle from "../theme/color-scheme-toggle";
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
+import { useAppDispatch, useAppSelector } from "@/shared/hooks/redux";
+import { logout } from "@/features/auth/model/auth-slice";
 
 
 
 export default function Header() {
+    const dispath = useAppDispatch()
+    const { authUser } = useAppSelector(state => state.auth)
+
     const [open, setOpen] = React.useState(false);
 
     const navigate = useNavigate()
     const location = useLocation()
-
+    
     return (
         <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'space-between', maxHeight: '15px' }}>
             <Stack
@@ -148,10 +153,7 @@ export default function Header() {
                                 />
                                 <Box sx={{ ml: 1.5 }}>
                                     <Typography level="title-sm" textColor="text.primary">
-                                        ТЕСТ Тест
-                                    </Typography>
-                                    <Typography level="body-xs" textColor="text.tertiary">
-                                        test@mail.com
+                                        {authUser?.login}
                                     </Typography>
                                 </Box>
                             </Box>
@@ -178,7 +180,7 @@ export default function Header() {
                             <OpenInNewRoundedIcon />
                         </MenuItem>
                         <ListDivider /> */}
-                        <MenuItem>
+                        <MenuItem onClick={() => dispath(logout())}>
                             <LogoutRoundedIcon />
                             Выход
                         </MenuItem>

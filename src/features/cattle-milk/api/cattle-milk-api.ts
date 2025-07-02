@@ -43,6 +43,13 @@ export const cattleMilkApi = cattleMilkApiWithTags.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['CattleMilk'],
+        }),
+        uploadIISCattleMilk: builder.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/01-cattle-dairy/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['CattleMilkList'],
         })
     })
 })
@@ -53,5 +60,6 @@ export const {
     useLazyGetCattleMilkQuery,
     useCreateCattleMilkMutation,
     useUpdateCattleMilkMutation,
-    useDeleteCattleMilkMutation
+    useDeleteCattleMilkMutation,
+    useUploadIISCattleMilkMutation
 } = cattleMilkApi

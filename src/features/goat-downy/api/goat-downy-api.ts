@@ -44,6 +44,13 @@ export const goatDownyApi = goatDownyApiWithTags.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['GoatDowny'],
+        }),
+        uploadIISGoatDowny: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/13-goat-downy/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['GoatDownyList'],
         })
     }),
 })
@@ -52,5 +59,7 @@ export const {
     useGetGoatDownyListQuery,
     useGetGoatDownyQuery,
     useCreateGoatDownyMutation,
-    useUpdateGoatDownyMutation
+    useUpdateGoatDownyMutation,
+    useDeleteGoatDownyMutation,
+    useUploadIISGoatDownyMutation
 } = goatDownyApi

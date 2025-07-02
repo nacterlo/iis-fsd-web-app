@@ -4,7 +4,11 @@ import React from 'react'
 import { PaginationOrganization } from '../pagination/pagination-oraganization'
 
 
-export default function OrganizationTable() {
+interface OrganizationTableProps {
+    onOpenModalUpdate: (id: number) => void
+ }
+
+export default function OrganizationTable({ onOpenModalUpdate }: OrganizationTableProps) {
 
     const limit = 10
     const [page, setPage] = React.useState(1)
@@ -85,7 +89,7 @@ export default function OrganizationTable() {
                                     </td>
                                     <td>
                                         <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-                                            <Link level="body-xs" component="button">
+                                            <Link level="body-xs" component="button" onClick={() => onOpenModalUpdate(row.id)}>
                                                 Просмотр
                                             </Link>
                                             {/* <RowMenu /> */}

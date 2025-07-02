@@ -46,6 +46,13 @@ export const sheepFineFleecedApi = sheepFineFleecedApiWithTags.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['SheepFineFleeced'],
+        }),
+        uploadIISSheepFineFleeced: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/08-sheep-fine-fleeced/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['SheepFineFleecedList'],
         })
     })
 })
@@ -55,5 +62,6 @@ export const {
     useGetSheepFineFleecedQuery,
     useCreateSheepFineFleecedMutation,
     useUpdateSheepFineFleecedMutation,
-    useDeleteSheepFineFleecedMutation
+    useDeleteSheepFineFleecedMutation,
+    useUploadIISSheepFineFleecedMutation
 } = sheepFineFleecedApi

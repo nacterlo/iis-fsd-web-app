@@ -10,6 +10,12 @@ export const organizationApi = organizationApiWithTags.injectEndpoints({
         getFullOrganizations: builder.query<ServerResponseArray<Organization>, void>({
             query: () => '/organization/full'
         }),
+        getOrganization: builder.query<Organization, number>({
+            query: (id) => ({
+                url: `/organization/${id}`,
+                method: 'GET',
+            }),
+        }),
         getOrganizations: builder.query<ServerResponseArray<Organization>, { limit: number, page: number }>({
             query: (params) => ({
                 url: `/organization/list?limit=${params.limit}&page=${params.page}`,
@@ -37,6 +43,7 @@ export const organizationApi = organizationApiWithTags.injectEndpoints({
 
 export const {
     useGetFullOrganizationsQuery,
+    useGetOrganizationQuery,
     useGetOrganizationsQuery,
     useCreateOrganizationMutation,
     useSearchOrganizationsQuery,

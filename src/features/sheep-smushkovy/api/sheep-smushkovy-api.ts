@@ -46,8 +46,22 @@ export const sheepSmushkovyApi = sheepSmushkovyApiWithTag.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['SheepSmushkovy'],
+        }),
+        uploadIISSheepSmushkovy: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/07-sheep-smushkovy/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['SheepSmushkovyList'],
         })
     }),
 })
 
-export const { useGetSheepSmushkovyListQuery, useGetSheepSmushkovyQuery, useCreateSheepSmushkovyMutation, useUpdateSheepSmushkovyMutation, useDeleteSheepSmushkovyMutation } = sheepSmushkovyApi
+export const {
+    useGetSheepSmushkovyListQuery,
+    useGetSheepSmushkovyQuery,
+    useCreateSheepSmushkovyMutation,
+    useUpdateSheepSmushkovyMutation,
+    useDeleteSheepSmushkovyMutation,
+    useUploadIISSheepSmushkovyMutation
+} = sheepSmushkovyApi

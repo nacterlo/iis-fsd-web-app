@@ -43,6 +43,13 @@ export const beeApi = beeApiWithTags.injectEndpoints({
                 method: 'DELETE',
             }),
             invalidatesTags: ['Bee']
+        }),
+        uploadIISBee: build.mutation<void, { id: number }>({
+            query: (data) => ({
+                url: `/20-bee/${data.id}/message/`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['BeeList']
         })
     }),
 })
@@ -52,5 +59,6 @@ export const {
     useGetBeeQuery,
     useCreateBeeMutation,
     useUpdateBeeMutation,
-    useDeleteBeeMutation
+    useDeleteBeeMutation,
+    useUploadIISBeeMutation
 } = beeApi
