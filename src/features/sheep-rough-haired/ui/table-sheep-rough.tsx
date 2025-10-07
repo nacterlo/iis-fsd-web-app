@@ -14,7 +14,7 @@ interface TableProps {
 
 export const TableSheepRough = ({ onOpenModalUpdate }: TableProps) => {
     const [page, _setPage] = useState(1)
-    const limit = 10
+    const limit = 100
 
     const { data: sheepList, isLoading: loadingSheepList, isError } = useGetSheepRoughListQuery({ limit, page })
 

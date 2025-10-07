@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { CreateCattleMilk } from '../../../model/types'
-import { Autocomplete, AutocompleteOption, FormControl, FormHelperText, FormLabel, Input, Option, Select, Stack, Textarea } from '@mui/joy'
+import { Autocomplete, AutocompleteOption, FormControl, FormLabel, Input, Option, Select, Stack, Textarea } from '@mui/joy'
 import { FemaleRounded, ListRounded, MaleRounded } from '@mui/icons-material'
-import { useLazySearchOrganizationsQuery } from '@/app/store/api/organization-api'
-import { IOrgSearch } from '@/features/organization/model/types'
+import { useGetFullOrganizationsQuery } from '@/app/store/api/organization-api'
+import { Organization } from '@/features/organization/model/types'
 
-interface IFormValues {
-    addresseeId: IOrgSearch | null;
-    businessEntityId: IOrgSearch | null;
-    ownerAtBirthId: IOrgSearch | null;
-}
 
 interface FormCattleMilkProps {
     onSubmitCrateCattleMilk: (data: CreateCattleMilk) => Promise<void>
@@ -24,127 +19,114 @@ export const FormCattleMilk = ({ onSubmitCrateCattleMilk }: FormCattleMilkProps)
         }
     })
 
-    const [triggerSearchOrganizations, { isLoading: loadingSearch }] = useLazySearchOrganizationsQuery();
-    // Общая функция для поиска организаций
-    // Общие обработчики для каждого поля
-    const handleSearch = (searchTerm: string, setOptions: React.Dispatch<React.SetStateAction<IOrgSearch[]>>) => {
-        if (searchTerm.trim().length > 2) {
-            triggerSearchOrganizations({ name: searchTerm })
-                .unwrap()
-                .then((response) => {
-                    setOptions(response.data || []);
-                });
-        }
-    };
+    const { data: fullOrganizations } = useGetFullOrganizationsQuery()
 
-    //Поиск получатель
-    const [searchAddresseId, setSearchAddresseId] = useState<string>('')
-    const [addresseIdResults, setAddresseIdResults] = useState<IOrgSearch[]>([])
+    const [optionsOrganization, setOptionsOrganization] = useState<Organization[]>([] as Organization[])
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            handleSearch(searchAddresseId, setAddresseIdResults)
-        }, 300)
-        return () => clearTimeout(timer)
-    }, [searchAddresseId])
-
-    //Поиск получатель собственник
-    const [searchBusinessEntityId, setSearchBusinessEntityId] = useState<string>('')
-    const [businessEntityIdResults, setBusinessEntityIdResults] = useState<IOrgSearch[]>([])
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            handleSearch(searchBusinessEntityId, setBusinessEntityIdResults)
-        }, 300)
-        return () => clearTimeout(timer)
-    }, [searchBusinessEntityId])
-
-    //Поиск место рождения
-    const [searchOwnerAtBirthId, setSearchOwnerAtBirthId] = useState<string>('')
-    const [ownerAtBirthIdResults, setOwnerAtBirthIdResults] = useState<IOrgSearch[]>([])
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            handleSearch(searchOwnerAtBirthId, setOwnerAtBirthIdResults)
-        }, 300)
-        return () => clearTimeout(timer)
-    }, [searchOwnerAtBirthId])
+        if (fullOrganizations) setOptionsOrganization(fullOrganizations.data)
+    }, [fullOrganizations])
 
     const onSubmit: SubmitHandler<CreateCattleMilk> = async (data) => {
         await onSubmitCrateCattleMilk(data)
     }
 
-    // Общая render функция для Autocomplete
-    const renderAutocomplete = (
-        name: keyof IFormValues,
-        label: string,
-        _searchTerm: string,
-        setSearchTerm: React.Dispatch<React.SetStateAction<string>>,
-        options: IOrgSearch[],
-        requiredMessage: string
-    ) => (
-        <FormControl required sx={{ width: '33%' }} error={!!errors[name]}>
-            <FormLabel>{label}</FormLabel>
-            <Controller
-                name={name}
-                control={control}
-                rules={{ required: requiredMessage }}
-                render={({ field: { onChange, ref } }) => (
-                    <Autocomplete
-                        loading={loadingSearch}
-                        placeholder={`Введите название ${label.toLowerCase()}`}
-                        onInputChange={(_, newValue, reason) => {
-                            if (reason === 'input') setSearchTerm(newValue)
-                        }}
-                        onChange={(_, newValue: IOrgSearch | null) => onChange(newValue?.id || null)}
-                        options={options}
-                        getOptionLabel={(option) => option.name}
-                        isOptionEqualToValue={(option, value) => option.id === value?.id}
-                        noOptionsText={options.length === 0 ? 'Введите минимум 3 символа' : 'Не найдено'}
-                        slotProps={{
-                            input: {
-                                ref,
-                            },
-                        }}
-                        renderOption={(props, option) => (
-                            <AutocompleteOption {...props} key={option.id}>
-                                {option.countryCode && ` (${option.countryCode}) `}
-                                {option.name}
-                            </AutocompleteOption>
-                        )}
-                    />
-                )}
-            />
-            {errors[name] && <FormHelperText>{errors[name]?.message}</FormHelperText>}
-        </FormControl>
-    );
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} id='createCattleMilk'>
             <Stack direction='column' spacing={1.5}>
                 <Stack direction='row' spacing={3}>
-                    {renderAutocomplete(
-                        'addresseeId',
-                        'Получатель',
-                        searchAddresseId,
-                        setSearchAddresseId,
-                        addresseIdResults,
-                        'qwe'
-                    )}
-                    {renderAutocomplete(
-                        'businessEntityId',
-                        'Собственник',
-                        searchBusinessEntityId,
-                        setSearchBusinessEntityId,
-                        businessEntityIdResults,
-                        'qweq'
-                    )}
-                    {renderAutocomplete(
-                        'ownerAtBirthId',
-                        'Место рождения',
-                        searchOwnerAtBirthId,
-                        setSearchOwnerAtBirthId,
-                        ownerAtBirthIdResults,
-                        'asfzzz'
+                    {optionsOrganization.length > 0 && (
+                        <Stack direction='row' spacing={3}>
+                            <FormControl required sx={{ flexGrow: 1 }} >
+                                <FormLabel>Получатель</FormLabel>
+                                <Controller
+                                    control={control}
+                                    name="addresseeId"
+                                    render={({ field: { onChange, ref } }) => (
+                                        <Autocomplete
+                                            size="sm"
+                                            placeholder="Получатель"
+                                            isOptionEqualToValue={(option, value) => option.id === value.id}
+                                            getOptionLabel={(option) => option.name}
+                                            options={optionsOrganization}
+                                            onChange={(_, newValue: Organization | null) => onChange(newValue?.id)}
+                                            slotProps={{
+                                                input: {
+                                                    ref,
+                                                    autoComplete: 'new-password'
+                                                }
+                                            }}
+                                            renderOption={(props, option) => (
+                                                <AutocompleteOption {...props} key={option.id}>
+                                                    {option.countryCode && ` (${option.countryCode}) `}
+                                                    {option.name}
+                                                </AutocompleteOption>
+                                            )}
+                                        />
+                                    )}
+                                />
+                            </FormControl>
+
+                            <FormControl required sx={{ flexGrow: 1 }} >
+                                <FormLabel>Собственник</FormLabel>
+                                <Controller
+                                    control={control}
+                                    name="businessEntityId"
+                                    render={({ field: { onChange, ref } }) => (
+                                        <Autocomplete
+                                            size="sm"
+                                            placeholder="Собственник"
+                                            isOptionEqualToValue={(option, value) => option.id === value.id}
+                                            getOptionLabel={(option) => option.name}
+                                            options={optionsOrganization}
+                                            onChange={(_, newValue: Organization | null) => onChange(newValue?.id)}
+                                            slotProps={{
+                                                input: {
+                                                    ref,
+                                                    autoComplete: 'new-password'
+                                                }
+                                            }}
+                                            renderOption={(props, option) => (
+                                                <AutocompleteOption {...props} key={option.id}>
+                                                    {option.countryCode && ` (${option.countryCode}) `}
+                                                    {option.name}
+                                                </AutocompleteOption>
+                                            )}
+                                        />
+                                    )}
+                                />
+                            </FormControl>
+                            <FormControl required sx={{ flexGrow: 1 }} >
+                                <FormLabel>Место рождения</FormLabel>
+                                <Controller
+                                    control={control}
+                                    name="ownerAtBirthId"
+                                    render={({ field: { onChange, ref } }) => (
+                                        <Autocomplete
+                                            size="sm"
+                                            placeholder="Место рождения"
+                                            isOptionEqualToValue={(option, value) => option.id === value.id}
+                                            getOptionLabel={(option) => option.name}
+                                            options={optionsOrganization}
+                                            onChange={(_, newValue: Organization | null) => onChange(newValue?.id)}
+                                            slotProps={{
+                                                input: {
+                                                    ref,
+                                                    autoComplete: 'new-password'
+                                                }
+                                            }}
+                                            renderOption={(props, option) => (
+                                                <AutocompleteOption {...props} key={option.id}>
+                                                    {option.countryCode && ` (${option.countryCode}) `}
+                                                    {option.name}
+                                                </AutocompleteOption>
+                                            )}
+                                        />
+                                    )}
+                                />
+                            </FormControl>
+                        </Stack>
                     )}
                 </Stack>
                 <Stack direction='row' spacing={3}>
@@ -392,7 +374,7 @@ export const FormCattleMilk = ({ onSubmitCrateCattleMilk }: FormCattleMilkProps)
                         )}
                     />
                 </FormControl>
-                
+
             </Stack>
         </form>
     )

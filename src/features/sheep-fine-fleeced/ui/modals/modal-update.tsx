@@ -1,4 +1,4 @@
-import { useGetSheepFineFleecedQuery, useUpdateSheepFineFleecedMutation } from "../../api/sheep-fine-fleeced";
+import { useGetSheepFineFleecedQuery, useUpdateSheepFineFleecedMutation, useUploadIISSheepFineFleecedMutation } from "../../api/sheep-fine-fleeced";
 import { UpdateSheepFineFleeced } from "../../model/types";
 
 import { BaseModalProps } from "@/shared/lib/types";
@@ -22,6 +22,9 @@ export const ModalUpdateSheepFineFleeced = ({ open, onClose, animalId }: ModalUp
 
             })
     }
+
+
+    const [uploadIISSheepFineFleeced, { isLoading: loadingIIS }] = useUploadIISSheepFineFleecedMutation()
 
     return (
         <Modal keepMounted open={open} onClose={onClose}>
@@ -58,6 +61,15 @@ export const ModalUpdateSheepFineFleeced = ({ open, onClose, animalId }: ModalUp
                     sx={{ pt: 1.5, justifyContent: 'flex-start', marginTop: 'auto' }}
                 >
                     <Button size="sm" type='submit' form='updateSheepFineFleeced' disabled={loadingUpdate}>Изменить</Button>
+                    <Button
+                        size="sm"
+                        color="success"
+                        disabled={loadingIIS}
+                        startDecorator={loadingIIS ? <CircularProgress size="sm" /> : null}
+                        onClick={() => uploadIISSheepFineFleeced({ id: animalId })}
+                    >
+                        Загрузить в ИИС
+                    </Button>
                     <Button variant='outlined' size="sm" onClick={() => onClose()}>Отмена</Button>
                 </DialogActions>
             </ModalDialog>

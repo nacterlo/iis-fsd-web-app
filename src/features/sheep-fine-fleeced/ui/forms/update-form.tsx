@@ -34,12 +34,14 @@ export const FormUpdateSheepFineFleeced = ({ initialData, onSubmitUpdate }: Upda
             birthDate: initialData.birthDate.split('T')[0],
             lineage: initialData.lineage,
             party: initialData.party,
-            sexCode: initialData.sexCode,
+            sexCode: initialData.sexCode
         })
 
     }, [initialData, reset])
 
     const onSubmit: SubmitHandler<UpdateSheepFineFleeced> = (data) => {
+        console.log(data);
+
         onSubmitUpdate(data)
     }
 
@@ -50,6 +52,8 @@ export const FormUpdateSheepFineFleeced = ({ initialData, onSubmitUpdate }: Upda
     useEffect(() => {
         if (fullOrganizations) setOptionsOrganization(fullOrganizations.data)
     }, [fullOrganizations])
+
+    
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} id='updateSheepFineFleeced'>
@@ -217,7 +221,7 @@ export const FormUpdateSheepFineFleeced = ({ initialData, onSubmitUpdate }: Upda
                 </Stack>
                 <Stack direction='row' spacing={3}>
                     <FormControl required sx={{ flexGrow: 1 }} error={!!errors.identificationNumber}>
-                        <FormLabel required>Идндивидуальный номер</FormLabel>
+                        <FormLabel required>Индивидуальный номер</FormLabel>
                         <Controller
                             name="individualNumber"
                             control={control}
@@ -225,13 +229,13 @@ export const FormUpdateSheepFineFleeced = ({ initialData, onSubmitUpdate }: Upda
                             render={({ field }) => (
                                 <Input
                                     size='sm'
-                                    placeholder='Идндивидуальный номер'
+                                    placeholder='Индивидуальный номер'
                                     {...field}
                                 />
                             )}
                         />
                     </FormControl>
-                    <FormControl required sx={{ width: '30%' }}>
+                    <FormControl sx={{ width: '30%' }}>
                         <FormLabel>Идентификатор партии</FormLabel>
                         <Controller
                             name="party"

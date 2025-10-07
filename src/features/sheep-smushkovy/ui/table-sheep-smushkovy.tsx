@@ -13,7 +13,7 @@ interface TableProps {
 
 export const TableSheepSmushkovy = ({ onOpenModalUpdate }: TableProps) => {
     const [page, _setPage] = useState(1)
-    const limit = 10
+    const limit = 100
 
     const { data: sheepList, isLoading: loadingSheepList, isError } = useGetSheepSmushkovyListQuery({ limit, page })
 

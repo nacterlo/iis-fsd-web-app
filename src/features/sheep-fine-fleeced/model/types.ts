@@ -48,7 +48,7 @@ export type UpdateSheepFineFleeced = {
     businessEntityId: number,
     ownerAtBirthId: number,
     id: number,
-    birthDate: string
+    birthDate: string,
     breed: string,
     createdAt: string,
     identificationNumber: string,

@@ -201,7 +201,7 @@ export const FormCreateSheepFineFleeced = ({ onSubmitCreate }: CreateFormProps) 
                 </Stack>
                 <Stack direction='row' spacing={3}>
                     <FormControl required sx={{ flexGrow: 1 }} error={!!errors.identificationNumber}>
-                        <FormLabel required>Идндивидуальный номер</FormLabel>
+                        <FormLabel required>Индивидуальный номер</FormLabel>
                         <Controller
                             name="individualNumber"
                             control={control}
@@ -209,13 +209,13 @@ export const FormCreateSheepFineFleeced = ({ onSubmitCreate }: CreateFormProps) 
                             render={({ field }) => (
                                 <Input
                                     size='sm'
-                                    placeholder='Идндивидуальный номер'
+                                    placeholder='Индивидуальный номер'
                                     {...field}
                                 />
                             )}
                         />
                     </FormControl>
-                    <FormControl required sx={{ width: '30%' }}>
+                    <FormControl sx={{ width: '30%' }}>
                         <FormLabel>Идентификатор партии</FormLabel>
                         <Controller
                             name="party"

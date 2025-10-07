@@ -3,8 +3,8 @@ import { CreateHorse, FormValuesHorse } from "../../model/types";
 import { useGetFullOrganizationsQuery } from "@/app/store/api/organization-api";
 import { Organization } from "@/features/organization/model/types";
 import { useState, useEffect } from "react";
-import { Autocomplete, AutocompleteOption, Box, Button, Card, Divider, FormControl, FormLabel, Input, Option, Select, Stack, Textarea } from "@mui/joy";
-import { FemaleRounded, ListRounded, MaleRounded } from "@mui/icons-material";
+import { Autocomplete, AutocompleteOption, Box, Button, Card, Divider, FormControl, FormHelperText, FormLabel, Input, Option, Select, Stack, Textarea } from "@mui/joy";
+import { FemaleRounded, InfoOutlined, MaleRounded } from "@mui/icons-material";
 import { convertToBase64 } from "@/shared/lib/utils";
 
 
@@ -51,7 +51,7 @@ export const FormHorse = ({ onSubmitCreate }: CreateFormProps) => {
                 measurements: data.bonitationMeasurements
             }
         }
-
+        
         await onSubmitCreate(createData)
     }
 
@@ -61,13 +61,13 @@ export const FormHorse = ({ onSubmitCreate }: CreateFormProps) => {
                 <Controller
                     name="graphicDescription"
                     control={control}
-                    rules={{
-                        required: 'Выберите изображение',
-                        validate: {
-                            validBase64: (value) =>
-                                typeof value === 'string' && value.startsWith('data:image') || 'Некорректный формат изображения'
-                        }
-                    }}
+                    // rules={{
+                    //     required: 'Выберите изображение',
+                    //     validate: {
+                    //         validBase64: (value) =>
+                    //             typeof value === 'string' && value.startsWith('data:image') || 'Некорректный формат изображения'
+                    //     }
+                    // }}
                     render={({ field: { onChange, value }, fieldState }) => (
                         <FormControl >
                             <FormLabel>Графическое описание</FormLabel>
@@ -327,7 +327,22 @@ export const FormHorse = ({ onSubmitCreate }: CreateFormProps) => {
                             )}
                         />
                     </FormControl>
-                    <FormControl required sx={{ width: '35%' }}>
+                    <FormControl required sx={{ width: '25%' }} error={!!errors.name}>
+                        <FormLabel required>Масть</FormLabel>
+                        <Controller
+                            name="suit"
+                            control={control}
+                            rules={{ required: 'Обязательное поле' }}
+                            render={({ field }) => (
+                                <Input
+                                    {...field}
+                                    size="sm"
+                                    placeholder='Масть'
+                                />
+                            )}
+                        />
+                    </FormControl>
+                    {/* <FormControl required sx={{ width: '35%' }}>
                         <FormLabel required>Масть</FormLabel>
                         <Controller
                             name="suit"
@@ -358,14 +373,13 @@ export const FormHorse = ({ onSubmitCreate }: CreateFormProps) => {
                             )}
                         />
 
-                    </FormControl>
+                    </FormControl> */}
                 </Stack>
-                <FormControl required sx={{ width: '30%' }} error={!!errors.party}>
-                    <FormLabel required>Идентификатор партии</FormLabel>
+                <FormControl sx={{ width: '30%' }} error={!!errors.party}>
+                    <FormLabel>Идентификатор партии</FormLabel>
                     <Controller
                         name="party"
                         control={control}
-                        rules={{ required: 'Обязательное поле' }}
                         render={({ field }) => (
                             <Input
                                 {...field}
@@ -405,6 +419,10 @@ export const FormHorse = ({ onSubmitCreate }: CreateFormProps) => {
                                 />
                             )}
                         />
+                        <FormHelperText sx={{ fontSize: '12px', ml: 1 }}>
+                            <InfoOutlined />
+                            Укажите прочерк, если не указано
+                        </FormHelperText>
                     </FormControl>
                     <FormControl required sx={{ flexGrow: 1 }} error={!!errors.bonitationMeasurements}>
                         <FormLabel required>Промеры бонитировки</FormLabel>
@@ -420,6 +438,10 @@ export const FormHorse = ({ onSubmitCreate }: CreateFormProps) => {
                                 />
                             )}
                         />
+                        <FormHelperText sx={{ fontSize: '12px', ml: 1 }}>
+                            <InfoOutlined />
+                            Укажите прочерк, если не указано
+                        </FormHelperText>
                     </FormControl>
                 </Stack>
                 <FormControl sx={{ width: '100%' }} error={!!errors.lineage}>

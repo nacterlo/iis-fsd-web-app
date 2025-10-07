@@ -216,7 +216,7 @@ export const FormUpdateSheepRough = ({ initialData, onSubmitUpdate }: UpdateForm
                 </Stack>
                 <Stack direction='row' spacing={3}>
                     <FormControl required sx={{ flexGrow: 1 }} error={!!errors.identificationNumber}>
-                        <FormLabel required>Идндивидуальный номер</FormLabel>
+                        <FormLabel required>Индивидуальный номер</FormLabel>
                         <Controller
                             name="individualNumber"
                             control={control}
@@ -224,7 +224,7 @@ export const FormUpdateSheepRough = ({ initialData, onSubmitUpdate }: UpdateForm
                             render={({ field }) => (
                                 <Input
                                     size='sm'
-                                    placeholder='Идндивидуальный номер'
+                                    placeholder='Индивидуальный номер'
                                     {...field}
                                 />
                             )}

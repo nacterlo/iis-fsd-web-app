@@ -1,4 +1,4 @@
-import { useGetFullOrganizationsQuery, useGetOrganizationQuery } from "@/app/store/api/organization-api";
+import { useGetOrganizationQuery } from "@/app/store/api/organization-api";
 import { BaseModalProps } from "@/shared/lib/types";
 import { Modal, ModalDialog } from "@mui/joy";
 

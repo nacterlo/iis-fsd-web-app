@@ -3,8 +3,8 @@ import { FormValuesHorse, Horse, UpdateHorse } from "../../model/types"
 import { useEffect, useState } from "react"
 import { useGetFullOrganizationsQuery } from "@/app/store/api/organization-api"
 import { Organization } from "@/features/organization/model/types"
-import { Autocomplete, AutocompleteOption, Box, Button, Card, Divider, FormControl, FormLabel, Input, Option, Select, Stack, Textarea } from "@mui/joy"
-import { MaleRounded, FemaleRounded, ListRounded } from "@mui/icons-material"
+import { Autocomplete, AutocompleteOption, Box, Button, Card, Divider, FormControl, FormHelperText, FormLabel, Input, Option, Select, Stack, Textarea } from "@mui/joy"
+import { MaleRounded, FemaleRounded, InfoOutlined } from "@mui/icons-material"
 import { convertToBase64 } from "@/shared/lib/utils"
 
 
@@ -74,7 +74,7 @@ export const UpdateFormHorse = ({ initialData, onSubmitUpdate }: UpdateFormProps
         }
         onSubmitUpdate(updateData)
     }
-    
+
 
     const { data: fullOrganizations } = useGetFullOrganizationsQuery()
 
@@ -101,7 +101,7 @@ export const UpdateFormHorse = ({ initialData, onSubmitUpdate }: UpdateFormProps
                         <FormControl >
                             <FormLabel>Графическое описание</FormLabel>
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-                                
+
                                 <input
                                     type="file"
                                     accept="image/jpeg, image/png"
@@ -211,7 +211,7 @@ export const UpdateFormHorse = ({ initialData, onSubmitUpdate }: UpdateFormProps
                                 )}
                             />
                         </FormControl>
-                        <FormControl sx={{ flexGrow: 1 }} >
+                        <FormControl sx={{ flexGrow: 1 }}>
                             <FormLabel>Место рождения</FormLabel>
                             <Controller
                                 control={control}
@@ -357,7 +357,22 @@ export const UpdateFormHorse = ({ initialData, onSubmitUpdate }: UpdateFormProps
                             )}
                         />
                     </FormControl>
-                    <FormControl required sx={{ width: '35%' }}>
+                    <FormControl required sx={{ width: '25%' }} error={!!errors.name}>
+                        <FormLabel required>Масть</FormLabel>
+                        <Controller
+                            name="suit"
+                            control={control}
+                            rules={{ required: 'Обязательное поле' }}
+                            render={({ field }) => (
+                                <Input
+                                    {...field}
+                                    size="sm"
+                                    placeholder='Масть'
+                                />
+                            )}
+                        />
+                    </FormControl>
+                    {/* <FormControl required sx={{ width: '35%' }}>
                         <FormLabel required>Масть</FormLabel>
                         <Controller
                             name="suit"
@@ -388,14 +403,13 @@ export const UpdateFormHorse = ({ initialData, onSubmitUpdate }: UpdateFormProps
                             )}
                         />
 
-                    </FormControl>
+                    </FormControl> */}
                 </Stack>
-                <FormControl required sx={{ width: '30%' }} error={!!errors.party}>
-                    <FormLabel required>Идентификатор партии</FormLabel>
+                <FormControl sx={{ width: '30%' }} error={!!errors.party}>
+                    <FormLabel>Идентификатор партии</FormLabel>
                     <Controller
                         name="party"
                         control={control}
-                        rules={{ required: 'Обязательное поле' }}
                         render={({ field }) => (
                             <Input
                                 {...field}
@@ -420,6 +434,10 @@ export const UpdateFormHorse = ({ initialData, onSubmitUpdate }: UpdateFormProps
                                 />
                             )}
                         />
+                        <FormHelperText sx={{ fontSize: '12px', ml: 1 }}>
+                            <InfoOutlined />
+                            Укажите прочерк, если не указано
+                        </FormHelperText>
                     </FormControl>
                     <FormControl required sx={{ flexGrow: 1 }} error={!!errors.bonitationEvaluation}>
                         <FormLabel required>Оценка бонитировки</FormLabel>
@@ -435,6 +453,10 @@ export const UpdateFormHorse = ({ initialData, onSubmitUpdate }: UpdateFormProps
                                 />
                             )}
                         />
+                        <FormHelperText sx={{ fontSize: '12px', ml: 1 }}>
+                            <InfoOutlined />
+                            Укажите прочерк, если не указано
+                        </FormHelperText>
                     </FormControl>
                     <FormControl required sx={{ flexGrow: 1 }} error={!!errors.bonitationMeasurements}>
                         <FormLabel required>Промеры бонитировки</FormLabel>
